@@ -1,7 +1,7 @@
 import { UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { User } from '@prisma/client';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 import { AuthRegisterDTO } from './dto/auth-regiter.dto';
 import { UserService } from '../user/user.service';
 
@@ -10,7 +10,9 @@ export class AuthService {
     private readonly jwtService: JwtService,
     private readonly prisma: PrismaService,
     private readonly userService: UserService,
-  ) {}
+  ) {
+    console.log({ prisma: this.prisma });
+  }
 
   async createToken(user: User) {
     return {
@@ -35,7 +37,6 @@ export class AuthService {
   }
 
   async login(email: string, password: string) {
-    console.log({ peisma: this.prisma });
     const users = await this.prisma.user.findFirst({
       where: {
         email,

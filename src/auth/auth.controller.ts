@@ -2,7 +2,7 @@ import { Body, Controller, Post } from '@nestjs/common';
 import { AuthLiginDTO } from './dto/auth-login.dto';
 import { AuthRegisterDTO } from './dto/auth-regiter.dto';
 import { AuthLForgetDTO } from './dto/auth-forget.dto';
-import { UserService } from 'src/user/user.service';
+import { UserService } from '../user/user.service';
 import { AuthService } from './auth.service';
 import { AuthResetDTO } from './dto/auth-reset.dto';
 
